@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: fastapi
-          image: nginx:latest
+          image: ghcr.io/fahad-shaikh09/fastapi-test:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
