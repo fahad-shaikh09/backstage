@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fastapi-test
+spec:
+  type: service
+  lifecycle: experimental
+  owner: platform-team

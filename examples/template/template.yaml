@@ -64,7 +64,7 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
+        catalogInfoPath: 'catalog-info.yaml'
 
     # Let's notify the user that the template has completed using the Notification action
     - id: notify

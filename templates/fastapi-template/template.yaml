@@ -1,0 +1,41 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: fastapi-template
+  title: FastAPI Service Generator
+  description: Generates FastAPI service with Docker + Git repo
+
+spec:
+  owner: platform-team
+  type: service
+
+  parameters:
+    - title: Service Info
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          title: Service Name
+
+  steps:
+    - id: fetch
+      name: Fetch skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          name: ${{ parameters.name }}
+
+    - id: publish
+      name: Publish to Git
+      action: publish:github
+      input:
+        repoUrl: github.com?owner=fahad-shaikh09&repo=${{ parameters.name }}
+
+    - id: register
+      name: Register in Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
