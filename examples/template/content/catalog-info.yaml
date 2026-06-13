@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: fastapi-test
+  name: ${{ values.name | dump }}
 spec:
   type: service
+  owner: user:guest
   lifecycle: experimental
-  owner: platform-team
